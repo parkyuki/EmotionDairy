@@ -3,6 +3,7 @@ import { DiaryStateContext } from "../App";
 import MyHeader from "./../components/MyHeader";
 import MyButton from "./../components/MyButton";
 import DiaryList from "./../components/DiaryList";
+import Calender from "./../components/Calender";
 
 const Home = () => {
   const diaryList = useContext(DiaryStateContext);
@@ -17,7 +18,6 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    console.log(data);
     if (diaryList.length >= 1) {
       const firstDay = new Date(
         curDate.getFullYear(),
@@ -58,6 +58,7 @@ const Home = () => {
         leftChild={<MyButton text={"<"} onClick={decreaseMonth} />}
         rightChild={<MyButton text={">"} onClick={increaseMonth} />}
       />
+      <Calender curDate={curDate} />
       <DiaryList diaryList={data} />
     </div>
   );
