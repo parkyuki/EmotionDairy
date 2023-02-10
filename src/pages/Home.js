@@ -50,6 +50,12 @@ const Home = () => {
       new Date(curDate.getFullYear(), curDate.getMonth() - 1, curDate.getDate())
     );
   };
+  const today = new Date();
+  const goToday = () => {
+    setCurDate(
+      new Date(today.getFullYear(), today.getMonth(), today.getDate())
+    );
+  };
 
   return (
     <div>
@@ -58,7 +64,10 @@ const Home = () => {
         leftChild={<MyButton text={"<"} onClick={decreaseMonth} />}
         rightChild={<MyButton text={">"} onClick={increaseMonth} />}
       />
-      <Calender curDate={curDate} />
+      <div className="todayBtn">
+        <MyButton text={"오늘"} type={"today"} onClick={goToday} />
+      </div>
+      <Calender curDate={curDate} today={today} diaryList={data} />
       <DiaryList diaryList={data} />
     </div>
   );
