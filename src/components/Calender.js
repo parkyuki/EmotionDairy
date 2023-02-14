@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import CalenderEmotion from "./CalenderEmotion";
 
 const Calender = ({ curDate, today, diaryList }) => {
-  const a = diaryList[0].date;
-
-  console.log(diaryList);
   const day = ["일", "월", "화", "수", "목", "금", "토"];
 
   const viewDate = {
@@ -55,16 +53,39 @@ const Calender = ({ curDate, today, diaryList }) => {
     findToday = dates.indexOf(today.getDate());
   }
 
+  const days = [];
+  diaryList.map((it) => {
+    days.push(new Date(it.date).getDate());
+  });
+
+  const month_dates = [];
+
   // 전달,다음달 날짜와 이번달 날짜 구분
   dates.map((it, idx) => {
     const condition =
       idx >= firstDateIndex && idx < lastDateIndex + 1 ? "this" : "other";
 
+    //오늘 날짜 체크
     const todayCheck = idx === findToday ? "today" : "";
 
-    dates[idx] = (
+    let has_diary = false;
+    let yuyu = 0;
+    if (idx >= firstDateIndex && idx < lastDateIndex + 1) {
+      has_diary = days.includes(it);
+    }
+
+    month_dates[idx] = (
       <div className={["date" + " " + todayCheck]}>
         <span className={condition}>{it}</span>
+        {has_diary && (
+          <img
+            className="CalenderEmotion"
+            src={
+              process.env.PUBLIC_URL +
+              `assets/emotion${diaryList[yuyu].emotion}.png`
+            }
+          />
+        )}
       </div>
     );
   });
@@ -77,12 +98,16 @@ const Calender = ({ curDate, today, diaryList }) => {
         ))}
       </div>
       <div className="dates">
-        {dates.map((it) => (
+        {month_dates.map((it) => (
           <>{it}</>
         ))}
       </div>
     </div>
   );
+};
+
+Calender.defaultProps = {
+  diaryList: [],
 };
 
 export default Calender;

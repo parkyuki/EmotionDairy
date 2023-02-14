@@ -347,6 +347,7 @@ header button {
 }
 .day {
   width: calc(100% / 7);
+
   text-align: center;
   font-size: 45px;
 }
@@ -357,6 +358,7 @@ header button {
 }
 .date {
   width: calc(100% / 7);
+  height: calc(100% / 5);
   font-size: 20px;
   border-bottom: 1px solid #ececec;
   border-top: 1px solid #ececec;
@@ -374,4 +376,10 @@ header button {
 .todayBtn {
   display: flex;
   justify-content: end;
+}
+
+.CalenderEmotion {
+  width: 75%;
+  display: flex;
+  margin: 0 auto;
 }
