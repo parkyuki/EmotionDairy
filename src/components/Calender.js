@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CalenderEmotion from "./CalenderEmotion";
 
 const Calender = ({ curDate, today, diaryList }) => {
   const day = ["일", "월", "화", "수", "목", "금", "토"];
