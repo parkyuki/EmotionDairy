@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "acoral-emotion-project",
+    "site": "private-diary-a",
     "public": "build",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
