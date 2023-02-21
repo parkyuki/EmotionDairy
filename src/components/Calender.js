@@ -55,9 +55,12 @@ const Calender = ({ curDate, today, diaryList }) => {
 
   const days = [];
   diaryList.map((it) => {
-    days.push(new Date(it.date).getDate());
+    days.push({
+      date: new Date(it.date).getDate(),
+      emotion: it.emotion,
+    });
   });
-
+  console.log(days);
   const month_dates = [];
 
   // 전달,다음달 날짜와 이번달 날짜 구분
@@ -68,21 +71,21 @@ const Calender = ({ curDate, today, diaryList }) => {
     //오늘 날짜 체크
     const todayCheck = idx === findToday ? "today" : "";
 
-    let has_diary = false;
-    let yuyu = 0;
+    let diary_index = -1;
+
     if (idx >= firstDateIndex && idx < lastDateIndex + 1) {
-      has_diary = days.includes(it);
+      diary_index = days.findIndex((day) => day.date === it);
     }
 
     month_dates[idx] = (
       <div className={["date" + " " + todayCheck]}>
         <span className={condition}>{it}</span>
-        {has_diary && (
+        {diary_index > -1 && (
           <img
             className="CalenderEmotion"
             src={
               process.env.PUBLIC_URL +
-              `assets/emotion${diaryList[yuyu].emotion}.png`
+              `assets/emotion${days[diary_index].emotion}.png`
             }
           />
         )}
