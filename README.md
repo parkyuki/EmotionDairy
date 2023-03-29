@@ -1,2 +1,2 @@
 # EmotionDairy
-EmotionDairy(Clone)
+EmotionDairy
