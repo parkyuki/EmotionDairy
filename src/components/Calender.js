@@ -83,8 +83,7 @@ const Calender = ({ curDate, today, diaryList }) => {
           <img
             className="CalenderEmotion"
             src={
-              process.env.PUBLIC_URL +
-              `assets/emotion${days[diary_index].emotion}.png`
+              process.env.PUBLIC_URL+`assets/emotion${days[diary_index].emotion}.png`
             }
           />
         )}

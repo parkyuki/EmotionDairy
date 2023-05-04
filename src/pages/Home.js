@@ -58,7 +58,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <>
       <MyHeader
         headeText={headText}
         leftChild={<MyButton text={"<"} onClick={decreaseMonth} />}
@@ -69,7 +69,7 @@ const Home = () => {
       </div>
       <Calender curDate={curDate} today={today} diaryList={data} />
       <DiaryList diaryList={data} />
-    </div>
+    </>
   );
 };
 
